@@ -15,7 +15,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fitbook.fitbook"
+    },
+    "android": {
+     "package": "com.fitbook.fitbook"
+   }
   }
 }
