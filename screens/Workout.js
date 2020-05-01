@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Button} from 'react-native';
 
 export default class Workout extends React.Component {
 
@@ -7,6 +7,10 @@ export default class Workout extends React.Component {
         return (
             <View style={styles.container}>
                 <Text>Workout</Text>
+                <Button
+                    title={'close modal'}
+                    onPress={() => this.props.navigation.goBack()}
+                />
             </View>
         );
     }
