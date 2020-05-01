@@ -1,11 +1,16 @@
 import React from 'react'
-import { Image } from 'react-native-elements'
+import {StyleSheet} from 'react-native'
+import { Text } from 'react-native-elements'
 
 const AppLogo = () => (
-  <Image
-    source={require('../assets/flame.png')}
-    style={{ width: 200, height: 200 }}
-  />
-)
+    <Text style={styles.title}>fitbook</Text>
+);
 
 export default AppLogo
+
+const styles = StyleSheet.create({
+    title: {
+        fontSize: 48,
+        fontWeight: 'bold',
+    }
+});

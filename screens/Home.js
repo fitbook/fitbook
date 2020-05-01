@@ -4,18 +4,22 @@ import { Button } from 'react-native-elements'
 import { withFirebaseHOC } from '../config/Firebase'
 
 class Home extends Component {
+  state = {
+    user: this.props.firebase.getCurrentUser()
+  };
   handleSignout = async () => {
     try {
-      await this.props.firebase.signOut()
+      await this.props.firebase.signOut();
       this.props.navigation.navigate('Auth')
     } catch (error) {
       console.log(error)
     }
-  }
+  };
   render() {
     return (
       <View style={styles.container}>
         <Text>Home</Text>
+        <Text>{ this.state.user.email }</Text>
         <Button
           title='Signout'
           onPress={this.handleSignout}
@@ -32,10 +36,9 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
 
-export default withFirebaseHOC(Home)
+export default withFirebaseHOC(Home);

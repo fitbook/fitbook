@@ -7,8 +7,8 @@ import { withFirebaseHOC } from '../config/Firebase'
 
 class Initial extends Component {
   state = {
-    isAssetsLoadingComplete: false
-  }
+    isAssetsLoadingComplete: false,
+  };
 
   componentDidMount = async () => {
     try {
@@ -18,7 +18,7 @@ class Initial extends Component {
       await this.props.firebase.checkUserAuth(user => {
         if (user) {
           // if the user has previously logged in
-          this.props.navigation.navigate('App')
+          this.props.navigation.navigate('App');
         } else {
           // if the user has previously signed out from the app
           this.props.navigation.navigate('Auth')
@@ -27,7 +27,7 @@ class Initial extends Component {
     } catch (error) {
       console.log(error)
     }
-  }
+  };
 
   loadLocalAsync = async () => {
     return await Promise.all([
@@ -39,17 +39,17 @@ class Initial extends Component {
         ...Icon.Ionicons.font
       })
     ])
-  }
+  };
 
   handleLoadingError = error => {
     // In this case, you might want to report the error to your error
     // reporting service, for example Sentry
     console.warn(error)
-  }
+  };
 
   handleFinishLoading = () => {
     this.setState({ isAssetsLoadingComplete: true })
-  }
+  };
 
   render() {
     return (

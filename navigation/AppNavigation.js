@@ -1,13 +1,9 @@
-import { createStackNavigator } from 'react-navigation-stack'
-import Home from '../screens/Home'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-const AppNavigation = createStackNavigator(
-  {
-    Home: { screen: Home }
-  },
-  {
-    initialRouteName: 'Home'
-  }
-)
+import BottomTabNavigator from './BottomTabNavigator';
 
-export default AppNavigation
+export default createAppContainer(
+    createSwitchNavigator({
+        Main: BottomTabNavigator
+    })
+);

@@ -23,6 +23,9 @@ const Firebase = {
   passwordReset: email => {
     return firebase.auth().sendPasswordResetEmail(email)
   },
+  getCurrentUser: () => {
+    return firebase.auth().currentUser;
+  },
   // firestore
   createNewUser: userData => {
     return firebase
@@ -31,6 +34,6 @@ const Firebase = {
       .doc(`${userData.uid}`)
       .set(userData)
   }
-}
+};
 
 export default Firebase
