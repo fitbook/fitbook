@@ -1,9 +1,8 @@
 import React from 'react';
 import {View, SafeAreaView, StyleSheet, Text, TouchableOpacity, Image, TextInput} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Constants from "expo-constants";
-import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
+import UserPermissions from "../utilities/UserPermissions";
 import { withFirebaseHOC } from '../config/Firebase';
 
 class Post extends React.Component {
@@ -13,17 +12,7 @@ class Post extends React.Component {
     };
 
     componentDidMount() {
-        this.getPhotoPermission();
-    }
-
-    getPhotoPermission = async () => {
-      if (Constants.platform.ios) {
-          const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-
-          if (status !== "granted") {
-            alert("We need permission to access your camera roll")
-          }
-      }
+        UserPermissions.getCameraPermission();
     };
 
     handlePost = () => {
