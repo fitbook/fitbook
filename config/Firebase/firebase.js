@@ -80,7 +80,31 @@ const Firebase = {
           );
       })
     },
-
+    getPosts: () => {
+      return new Promise( async (res, rej) => {
+          firebase
+              .firestore()
+              .collection('posts')
+              .get()
+              .then((querySnapshot) => {
+                  let posts = [];
+                  querySnapshot.forEach((doc) => {
+                      const post = {
+                          id: doc.id,
+                          text: doc.data().text,
+                          timestamp: doc.data().timestamp,
+                          image: doc.data().image,
+                          avatar: require("../../assets/avatar.png")
+                      };
+                      posts.push(post);
+                  });
+                  res(posts);
+              })
+              .catch(error => {
+                  rej(error);
+              });
+      });
+    },
    getUid() {
       return (firebase.auth().currentUser || {}).uid;
    },
